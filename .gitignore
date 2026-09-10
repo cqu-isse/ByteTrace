@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+.idea/
+*.log
+*.log.*
+examples/simple-java/classes/

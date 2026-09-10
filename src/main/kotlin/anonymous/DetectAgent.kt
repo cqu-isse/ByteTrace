@@ -40,7 +40,10 @@ object DetectAgent {
         val baseDir = File(baseDirStr)
         val properties = Properties()
         try {
-            properties.load(File(baseDir, D4J_FILE).reader())
+            val d4jFile = File(baseDir, D4J_FILE)
+            if (d4jFile.isFile) {
+                d4jFile.reader().use { properties.load(it) }
+            }
         } catch (e: IOException) {
             logger.error { e.stackTraceToString() }
             logger.info { "Error when reading file: $D4J_FILE! Skip." }
